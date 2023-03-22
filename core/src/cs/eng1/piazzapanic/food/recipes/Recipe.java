@@ -50,6 +50,10 @@ public class Recipe {
         ingredientTypes.add("tomato_chopped");
         ingredientTypes.add("lettuce_chopped");
         break;
+      case "pizza":
+        ingredientTypes.add("cheese");
+        ingredientTypes.add("pizza_base_cooked");
+        break;
     }
     return ingredientTypes;
   }
