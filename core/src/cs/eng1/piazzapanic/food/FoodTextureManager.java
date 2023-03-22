@@ -26,10 +26,6 @@ public class FoodTextureManager implements Disposable {
         new Texture(Gdx.files.internal("food/original/tomato_chopped.png")));
     this.foodTextures.put("bun",
         new Texture(Gdx.files.internal("food/glitch/misc/bun.png")));
-    this.foodTextures.put("humborge",
-        new Texture(Gdx.files.internal("food/unknown/humborge.png")));
-    this.foodTextures.put("salad",
-        new Texture(Gdx.files.internal("food/glitch/misc/salad.png")));
     this.foodTextures.put("cheese",
         new Texture(Gdx.files.internal("food/glitch/dairy/cheese_02.png")));
     this.foodTextures.put("potato",
@@ -38,6 +34,12 @@ public class FoodTextureManager implements Disposable {
         new Texture(Gdx.files.internal("food/original/cooked_pizza_base.png")));
     this.foodTextures.put("pizza_base_raw",
         new Texture(Gdx.files.internal("food/original/uncooked_pizza_base.png")));
+    this.foodTextures.put("humborge",
+        new Texture(Gdx.files.internal("food/unknown/humborge.png")));
+    this.foodTextures.put("salad",
+        new Texture(Gdx.files.internal("food/glitch/misc/salad.png")));
+    this.foodTextures.put("pizza",
+        new Texture(Gdx.files.internal("assets/food/glitch/misc/pizza_02.png")));
     notFoundImage = new Texture(Gdx.files.internal("badlogic.jpg"));
   }
 
