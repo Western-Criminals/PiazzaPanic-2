@@ -5,6 +5,7 @@ import cs.eng1.piazzapanic.food.recipes.Recipe;
 
 public class Pizza extends Recipe {
 
-  public Pizza(FoodTextureManager textureManager) {
+    public Pizza(FoodTextureManager textureManager) {
     super("pizza", textureManager);
+    }
 }
