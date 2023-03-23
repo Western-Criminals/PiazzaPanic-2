@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import cs.eng1.piazzapanic.food.ingredients.Ingredient;
 import cs.eng1.piazzapanic.food.ingredients.Patty;
+import cs.eng1.piazzapanic.food.ingredients.PizzaBase;
 import cs.eng1.piazzapanic.ui.StationActionUI;
 import cs.eng1.piazzapanic.ui.StationUIController;
 
@@ -64,6 +65,8 @@ public class CookingStation extends Station {
           ((Patty) currentIngredient).setHalfCooked();
         } else if (currentIngredient instanceof Patty
             && ((Patty) currentIngredient).getIsHalfCooked() && !currentIngredient.getIsCooked()) {
+          currentIngredient.setIsCooked(true);
+        } else if (currentIngredient instanceof PizzaBase) {
           currentIngredient.setIsCooked(true);
         }
         uiController.hideProgressBar(this);
