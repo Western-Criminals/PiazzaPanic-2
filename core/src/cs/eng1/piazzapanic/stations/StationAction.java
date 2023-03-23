@@ -10,6 +10,8 @@ public class StationAction {
     GRAB_INGREDIENT,
     MAKE_BURGER,
     MAKE_SALAD,
+    MAKE_PIZZA;
+    MAKE_JACKETPOTATO;
     SUBMIT_ORDER,
   }
 
@@ -29,6 +31,10 @@ public class StationAction {
         return "Make Burger";
       case MAKE_SALAD:
         return "Make Salad";
+      case MAKE_PIZZA:
+        return "Make Pizza";
+      case MAKE_JACKETPOTATO:
+        return "Make Potato";
       case SUBMIT_ORDER:
         return "Submit Order";
       default:
