@@ -40,6 +40,8 @@ public class FoodTextureManager implements Disposable {
         new Texture(Gdx.files.internal("food/glitch/misc/salad.png")));
     this.foodTextures.put("pizza",
         new Texture(Gdx.files.internal("food/glitch/misc/pizza_02.png")));
+    this.foodTextures.put("jacket_potato",
+        new Texture(Gdx.files.internal("food/original/jacket_potato.png")));
     notFoundImage = new Texture(Gdx.files.internal("badlogic.jpg"));
   }
 
