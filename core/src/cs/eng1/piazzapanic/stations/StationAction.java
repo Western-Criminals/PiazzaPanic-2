@@ -10,8 +10,8 @@ public class StationAction {
     GRAB_INGREDIENT,
     MAKE_BURGER,
     MAKE_SALAD,
-    MAKE_PIZZA;
-    MAKE_JACKETPOTATO;
+    MAKE_PIZZA,
+    MAKE_JACKETPOTATO,
     SUBMIT_ORDER,
   }
 
