@@ -54,6 +54,10 @@ public class Recipe {
         ingredientTypes.add("cheese");
         ingredientTypes.add("pizza_base_cooked");
         break;
+      case "jacket_potato":
+        ingredientTypes.add("cheese");
+        ingredientTypes.add("potato");
+        break;
     }
     return ingredientTypes;
   }
