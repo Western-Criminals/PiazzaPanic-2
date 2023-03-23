@@ -2,12 +2,14 @@ package cs.eng1.piazzapanic.stations;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import cs.eng1.piazzapanic.food.recipes.Humborge;
 import cs.eng1.piazzapanic.food.CustomerManager;
 import cs.eng1.piazzapanic.food.ingredients.Ingredient;
 import cs.eng1.piazzapanic.food.FoodTextureManager;
 import cs.eng1.piazzapanic.food.recipes.Recipe;
+import cs.eng1.piazzapanic.food.recipes.Humborge;
 import cs.eng1.piazzapanic.food.recipes.Salad;
+import cs.eng1.piazzapanic.food.recipes.Pizza;
+import cs.eng1.piazzapanic.food.recipes.JacketPotato;
 import cs.eng1.piazzapanic.stations.StationAction.ActionType;
 import cs.eng1.piazzapanic.ui.StationActionUI.ActionAlignment;
 import cs.eng1.piazzapanic.ui.StationUIController;
@@ -28,6 +30,9 @@ public class RecipeStation extends Station {
   protected int pattyCount = 0;
   protected int lettuceCount = 0;
   protected int tomatoCount = 0;
+  protected int cheeseCount = 0;
+  protected int pizzaBaseCount = 0;
+  protected int potatoCount = 0;
   private Recipe completedRecipe = null;
 
   /**
@@ -57,6 +62,9 @@ public class RecipeStation extends Station {
     pattyCount = 0;
     lettuceCount = 0;
     tomatoCount = 0;
+    cheeseCount = 0;
+    pizzaBaseCount = 0;
+    potatoCount = 0;
     completedRecipe = null;
     super.reset();
   }
@@ -74,7 +82,8 @@ public class RecipeStation extends Station {
       if (!nearbyChef.getStack().isEmpty()) {
         Ingredient checkItem = nearbyChef.getStack().peek();
         if (checkItem.getIsChopped() || checkItem.getIsCooked() || Objects.equals(
-            checkItem.getType(), "bun")) {
+            checkItem.getType(), "bun") || Objects.equals(checkItem.getType(), "cheese") || Objects.equals(
+            checkItem.getType(), "potato")) {
           //If a chef is nearby and is carrying at least one ingredient
           // and the top ingredient is cooked, chopped or a bun then display the action
           actionTypes.add(ActionType.PLACE_INGREDIENT);
@@ -86,6 +95,12 @@ public class RecipeStation extends Station {
         }
         if (tomatoCount >= 1 && lettuceCount >= 1 && nearbyChef.getStack().hasSpace()) {
           actionTypes.add(ActionType.MAKE_SALAD);
+        }
+        if (cheeseCount >= 1 && pizzaBaseCount >= 1 && nearbyChef.getStack().hasSpace()) {
+          actionTypes.add(ActionType.MAKE_PIZZA);
+        }
+        if (cheeseCount >= 1 && potatoCount >= 1 && nearbyChef.getStack().hasSpace()) {
+          actionTypes.add(ActionType.MAKE_JACKETPOTATO);
         }
       } else if (customerManager.checkRecipe(completedRecipe)) {
         actionTypes.add(ActionType.SUBMIT_ORDER);
@@ -106,21 +121,33 @@ public class RecipeStation extends Station {
       case PLACE_INGREDIENT:
         Ingredient topItem = nearbyChef.getStack().peek();
         switch (topItem.getType()) {
+          case "bun":
+            nearbyChef.placeIngredient();
+            bunCount += 1;
+            break;
           case "patty":
             nearbyChef.placeIngredient();
             pattyCount += 1;
-            break;
-          case "tomato":
-            nearbyChef.placeIngredient();
-            tomatoCount += 1;
             break;
           case "lettuce":
             nearbyChef.placeIngredient();
             lettuceCount += 1;
             break;
-          case "bun":
+          case "tomato":
             nearbyChef.placeIngredient();
-            bunCount += 1;
+            tomatoCount += 1;
+            break;
+          case "cheese":
+            nearbyChef.placeIngredient();
+            cheeseCount += 1;
+            break;
+          case "pizza_base":
+            nearbyChef.placeIngredient();
+            pizzaBaseCount += 1;
+            break;
+          case "potato":
+            nearbyChef.placeIngredient();
+            potatoCount += 1;
             break;
         }
 
@@ -135,6 +162,18 @@ public class RecipeStation extends Station {
         completedRecipe = new Salad(textureManager);
         tomatoCount -= 1;
         lettuceCount -= 1;
+        break;
+
+      case MAKE_PIZZA:
+        completedRecipe = new Pizza(textureManager);
+        cheeseCount -= 1;
+        pizzaBaseCount -= 1;
+        break;
+
+      case MAKE_JACKETPOTATO:
+        completedRecipe = new JacketPotato(textureManager);
+        cheeseCount -= 1;
+        potatoCount -= 1;
         break;
 
       case SUBMIT_ORDER:
@@ -170,6 +209,15 @@ public class RecipeStation extends Station {
     }
     if (tomatoCount > 0) {
       drawFoodTexture(batch, textureManager.getTexture("tomato_chopped"));
+    }
+    if (cheeseCount > 0) {
+      drawFoodTexture(batch, textureManager.getTexture("cheese"));
+    }
+    if (pizzaBaseCount > 0) {
+      drawFoodTexture(batch, textureManager.getTexture("pizza_base_cooked"));
+    }
+    if (potatoCount > 0) {
+      drawFoodTexture(batch, textureManager.getTexture("potato"));
     }
     if (completedRecipe != null) {
       drawFoodTexture(batch, completedRecipe.getTexture());
