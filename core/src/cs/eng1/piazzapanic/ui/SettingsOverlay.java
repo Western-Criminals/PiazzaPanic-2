@@ -13,8 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import cs.eng1.piazzapanic.PiazzaPanicGame;
-import cs.eng1.piazzapanic.ui.ButtonManager;
-import cs.eng1.piazzapanic.ui.ButtonManager.ButtonColour;
+import cs.eng1.piazzapanic.ui.ButtonManager.*;
 
 public class SettingsOverlay {
 

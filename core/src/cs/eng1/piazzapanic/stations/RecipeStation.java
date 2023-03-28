@@ -192,6 +192,8 @@ public class RecipeStation extends Station {
       case CLEAR_TABLE:
         reset();
         break;
+      default:
+        break;
     }
     uiController.showActions(this, getActionTypes());
   }

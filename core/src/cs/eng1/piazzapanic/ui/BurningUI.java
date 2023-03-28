@@ -14,27 +14,22 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import cs.eng1.piazzapanic.PiazzaPanicGame;
 import cs.eng1.piazzapanic.stations.Station;
 import cs.eng1.piazzapanic.stations.StationAction;
+import cs.eng1.piazzapanic.ui.StationActionUI.ActionAlignment;
 
 import java.util.List;
 
 
-public class StationActionUI extends Table {
+public class BurningUI extends Table {
 
   private ActionAlignment actionAlignment = ActionAlignment.TOP;
 
-  public enum ActionAlignment {
-    LEFT,
-    TOP,
-    RIGHT,
-    BOTTOM
-  }
 
   private final Station station;
   private final PiazzaPanicGame game;
   private final ProgressBar progress;
 
 
-  public StationActionUI(final Station station, final PiazzaPanicGame game) {
+  public BurningUI(final Station station, final PiazzaPanicGame game) {
     this.station = station;
     this.game = game;
     setVisible(false);
@@ -43,9 +38,9 @@ public class StationActionUI extends Table {
 
     ProgressBarStyle progressBarStyle = new ProgressBarStyle(new TextureRegionDrawable(new Texture(
         Gdx.files.internal(
-            "Kenney-Game-Assets-1/2D assets/UI Base Pack/PNG/blue_button_outline_up.png"))), null);
+            "Kenney-Game-Assets-1/2D assets/UI Base Pack/PNG/red_button_outline_up.png"))), null);
     progressBarStyle.knobBefore = new TextureRegionDrawable(new Texture(Gdx.files.internal(
-        "Kenney-Game-Assets-1/2D assets/UI Base Pack/PNG/blue_button_gradient_up.png")));
+        "Kenney-Game-Assets-1/2D assets/UI Base Pack/PNG/red_button_gradient_up.png")));
     progress = new ProgressBar(0, 100, 0.1f, false, progressBarStyle);
   }
 
@@ -80,7 +75,7 @@ public class StationActionUI extends Table {
     for (final StationAction.ActionType action : actions) {
       String actionDescription = StationAction.getActionDescription(action);
       TextButton actionButton = game.getButtonManager()
-          .createTextButton(actionDescription, ButtonManager.ButtonColour.BLUE);
+          .createTextButton(actionDescription, ButtonManager.ButtonColour.RED);
       actionButton.addListener(new ClickListener() {
         @Override
         public void clicked(InputEvent event, float x, float y) {
@@ -109,7 +104,7 @@ public class StationActionUI extends Table {
     }
   }
 
-  public void setActionAlignment(ActionAlignment actionAlignment) {
+  public void setActionAlignment(cs.eng1.piazzapanic.ui.StationActionUI.ActionAlignment actionAlignment) {
     this.actionAlignment = actionAlignment;
     center();
     switch (actionAlignment) {

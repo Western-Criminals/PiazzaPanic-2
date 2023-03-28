@@ -17,7 +17,9 @@ public class PizzaBase extends Ingredient {
   @Override
   public Texture getTexture() {
     String name = getType() + "_";
-    if (isCooked) {
+    if (isBurnt) {
+      name += "burnt";
+    } else if (isCooked) {
       name += "cooked";
     } else {
       name += "raw";

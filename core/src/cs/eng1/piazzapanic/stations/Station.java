@@ -24,6 +24,7 @@ public class Station extends Actor implements Observer<Chef> {
   protected final TextureRegion stationImage;
 
   protected boolean inUse = false;
+  protected boolean done = false;
 
   protected final List<Subject<Chef>> chefSubjects = new LinkedList<>();
   protected Chef nearbyChef = null;

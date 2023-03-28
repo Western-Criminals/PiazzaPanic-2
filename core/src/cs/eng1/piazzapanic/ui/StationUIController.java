@@ -17,11 +17,13 @@ public class StationUIController {
   private final Stage uiStage;
   private final PiazzaPanicGame game;
   private final HashMap<Integer, StationActionUI> stationActionUI;
+  private final HashMap<Integer, BurningUI> burningUI;
 
   public StationUIController(Stage uiStage, PiazzaPanicGame game) {
     this.uiStage = uiStage;
     this.game = game;
     stationActionUI = new HashMap<>();
+    burningUI = new HashMap<>();
   }
 
   /**
@@ -34,6 +36,15 @@ public class StationUIController {
     buttons.setActionAlignment(station.getActionAlignment());
     uiStage.addActor(buttons);
     stationActionUI.put(station.getId(), buttons);
+  }
+/**
+ * Keep track of burning items in a station.
+ */
+  public void addBurning(Station station) {
+    BurningUI buttons = new BurningUI(station, game);
+    buttons.setActionAlignment(station.getActionAlignment());
+    uiStage.addActor(buttons);
+    burningUI.put(station.getId(), buttons);
   }
 
   /**
@@ -81,6 +92,15 @@ public class StationUIController {
 
     buttons.showProgressBar();
   }
+  public void showBurningBar(Station station) {
+    BurningUI buttons = burningUI.get(station.getId());
+    if (buttons == null) {
+      addBurning(station);
+      buttons = burningUI.get(station.getId());
+    }
+
+    buttons.showProgressBar();
+  }
 
   /**
    * Update progress bar for a station. If the station is not one that this class knows, then it
@@ -98,6 +118,15 @@ public class StationUIController {
 
     buttons.updateProgress(value);
   }
+  public void updateBurningValue(Station station, float value) {
+    BurningUI buttons = burningUI.get(station.getId());
+    if (buttons == null) {
+      addStation(station);
+      buttons = burningUI.get(station.getId());
+    }
+
+    buttons.updateProgress(value);
+  }
 
   /**
    * Hide any actions that may be visible for a given station.
@@ -106,6 +135,12 @@ public class StationUIController {
    */
   public void hideProgressBar(Station station) {
     StationActionUI buttons = stationActionUI.get(station.getId());
+    if (buttons != null) {
+      buttons.hideProgressBar();
+    }
+  }
+  public void hideBurntBar(Station station) {
+    BurningUI buttons = burningUI.get(station.getId());
     if (buttons != null) {
       buttons.hideProgressBar();
     }

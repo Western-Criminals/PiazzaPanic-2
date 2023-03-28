@@ -10,6 +10,7 @@ public class Ingredient {
   protected final FoodTextureManager textureManager;
   protected boolean isCooked = false;
   protected  boolean isChopped = false;
+  protected boolean isBurnt = false;
 
   public Ingredient(String type, FoodTextureManager textureManager) {
     this.type = type;
@@ -20,6 +21,7 @@ public class Ingredient {
   public String toString() {
     String output = getType() + "_";
     if (isChopped) output += "chopped";
+    else if (isBurnt) output += "burnt";
     else if (isCooked) output += "cooked";
     else output += "raw";
     return output;
@@ -81,11 +83,15 @@ public class Ingredient {
   public void setIsCooked(boolean value) {
     isCooked = value;
   }
-
   public boolean getIsCooked() {
     return isCooked;
   }
-
+  public void setIsBurnt(boolean value) {
+    isBurnt = value;
+  }
+  public boolean getIsBurnt() {
+    return isBurnt;
+  }
   public void setIsChopped(boolean value) {
     isChopped = value;
   }
