@@ -32,6 +32,7 @@ public class StationActionUI extends Table {
   private final Station station;
   private final PiazzaPanicGame game;
   private final ProgressBar progress;
+  private final ProgressBar progress2;
 
 
   public StationActionUI(final Station station, final PiazzaPanicGame game) {
@@ -47,6 +48,13 @@ public class StationActionUI extends Table {
     progressBarStyle.knobBefore = new TextureRegionDrawable(new Texture(Gdx.files.internal(
         "Kenney-Game-Assets-1/2D assets/UI Base Pack/PNG/blue_button_gradient_up.png")));
     progress = new ProgressBar(0, 100, 0.1f, false, progressBarStyle);
+
+    ProgressBarStyle progressBarStyle2 = new ProgressBarStyle(new TextureRegionDrawable(new Texture(
+        Gdx.files.internal(
+            "Kenney-Game-Assets-1/2D assets/UI Base Pack/PNG/red_button_outline_up.png"))), null);
+    progressBarStyle.knobBefore = new TextureRegionDrawable(new Texture(Gdx.files.internal(
+        "Kenney-Game-Assets-1/2D assets/UI Base Pack/PNG/red_button_gradient_up.png")));
+    progress2 = new ProgressBar(0, 100, 0.1f, false, progressBarStyle2);
   }
 
   /**
@@ -57,6 +65,11 @@ public class StationActionUI extends Table {
     add(progress).pad(10f);
     setVisible(true);
   }
+  public void showProgressBar2() {
+    progress2.setValue(0);
+    add(progress2).pad(10f);
+    setVisible(true);
+  }
 
   /**
    * @param percentage A value between 0 and 100 representing the percentage completed
@@ -64,8 +77,14 @@ public class StationActionUI extends Table {
   public void updateProgress(float percentage) {
     progress.setValue(percentage);
   }
+  public void updateProgress2(float percentage) {
+    progress2.setValue(percentage);
+  }
 
   public void hideProgressBar() {
+    removeActor(progress);
+  }
+  public void hideProgressBar2() {
     removeActor(progress);
   }
 
@@ -90,6 +109,7 @@ public class StationActionUI extends Table {
       });
       add(actionButton).width(100).height(30).pad(2f);
       row();
+      showProgressBar2();
     }
     setVisible(true);
   }
