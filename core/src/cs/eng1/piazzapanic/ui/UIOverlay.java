@@ -38,6 +38,7 @@ public class UIOverlay {
   private int rep;
   private final Label repLabel;
   private static Timer repTimer = null;
+  public static Value scale = null;
 
   public UIOverlay(Stage uiStage, final PiazzaPanicGame game) {
     this.game = game;
@@ -126,7 +127,7 @@ public class UIOverlay {
     repLabel.setAlignment(Align.center);
 
     // Add everything
-    Value scale = Value.percentWidth(0.04f, table);
+    scale = Value.percentWidth(0.04f, table);
     Value timerWidth = Value.percentWidth(0.2f, table);
     table.add(chefDisplay).left().width(scale).height(scale);
     table.add(timer).expandX().width(timerWidth).height(scale);

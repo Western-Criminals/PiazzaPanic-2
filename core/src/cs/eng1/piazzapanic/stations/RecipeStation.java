@@ -105,9 +105,11 @@ public class RecipeStation extends Station {
         else {
           actionTypes.add(ActionType.CLEAR_TABLE);
         }
-      } else if (customerManager.checkRecipe(completedRecipe)) {
+      } 
+      else if (customerManager.checkRecipe(completedRecipe)) {
         actionTypes.add(ActionType.SUBMIT_ORDER);
-      } else {
+      } 
+      else {
         actionTypes.add(ActionType.CLEAR_TABLE);
       }
     }

@@ -42,7 +42,6 @@ public class StationUIController {
  */
   public void addBurning(Station station) {
     BurningUI buttons = new BurningUI(station, game);
-    buttons.setActionAlignment(station.getActionAlignment());
     uiStage.addActor(buttons);
     burningUI.put(station.getId(), buttons);
   }
@@ -118,6 +117,7 @@ public class StationUIController {
 
     buttons.updateProgress(value);
   }
+  
   public void updateBurningValue(Station station, float value) {
     BurningUI buttons = burningUI.get(station.getId());
     if (buttons == null) {

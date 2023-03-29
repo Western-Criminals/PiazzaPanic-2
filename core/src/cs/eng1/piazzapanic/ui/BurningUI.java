@@ -15,13 +15,14 @@ import cs.eng1.piazzapanic.PiazzaPanicGame;
 import cs.eng1.piazzapanic.stations.Station;
 import cs.eng1.piazzapanic.stations.StationAction;
 import cs.eng1.piazzapanic.ui.StationActionUI.ActionAlignment;
+import cs.eng1.piazzapanic.ui.UIOverlay;
 
 import java.util.List;
 
 
 public class BurningUI extends Table {
 
-  private ActionAlignment actionAlignment = ActionAlignment.TOP;
+  private ActionAlignment actionAlignment = ActionAlignment.BOTTOM;
 
 
   private final Station station;
@@ -38,10 +39,10 @@ public class BurningUI extends Table {
 
     ProgressBarStyle progressBarStyle = new ProgressBarStyle(new TextureRegionDrawable(new Texture(
         Gdx.files.internal(
-            "Kenney-Game-Assets-1/2D assets/UI Base Pack/PNG/red_button_outline_up.png"))), null);
+            "food/original/clear.png"))), null);
     progressBarStyle.knobBefore = new TextureRegionDrawable(new Texture(Gdx.files.internal(
-        "Kenney-Game-Assets-1/2D assets/UI Base Pack/PNG/red_button_gradient_up.png")));
-    progress = new ProgressBar(0, 100, 0.1f, false, progressBarStyle);
+      "food/original/fire.png")));
+    progress = new ProgressBar(0, 100, 0.1f, true, progressBarStyle);
   }
 
   /**
@@ -49,7 +50,7 @@ public class BurningUI extends Table {
    */
   public void showProgressBar() {
     progress.setValue(0);
-    add(progress).pad(10f);
+    add(progress).height(UIOverlay.scale).width(UIOverlay.scale);
     setVisible(true);
   }
 
@@ -61,66 +62,7 @@ public class BurningUI extends Table {
   }
 
   public void hideProgressBar() {
-    removeActor(progress);
-  }
-
-  /**
-   * Take a list of actions, clear the current visible buttons and replace them with one for every
-   * possible action and generate callbacks to the station.
-   *
-   * @param actions The list of possible station actions to display.
-   */
-  public void showActions(List<StationAction.ActionType> actions) {
-    hideActions();
-    for (final StationAction.ActionType action : actions) {
-      String actionDescription = StationAction.getActionDescription(action);
-      TextButton actionButton = game.getButtonManager()
-          .createTextButton(actionDescription, ButtonManager.ButtonColour.RED);
-      actionButton.addListener(new ClickListener() {
-        @Override
-        public void clicked(InputEvent event, float x, float y) {
-          station.doStationAction(action);
-          super.clicked(event, x, y);
-        }
-      });
-      add(actionButton).width(100).height(30).pad(2f);
-      row();
-    }
-    setVisible(true);
-  }
-
-  /**
-   * Hide all the possible actions, while keeping the progress visible if it is there.
-   */
-  public void hideActions() {
-    setVisible(false);
-
-    boolean hasProgress = getChildren().contains(progress, true);
-
-    clearChildren();
-    if (hasProgress) {
-      add(progress).pad(10f);
-      setVisible(true);
-    }
-  }
-
-  public void setActionAlignment(cs.eng1.piazzapanic.ui.StationActionUI.ActionAlignment actionAlignment) {
-    this.actionAlignment = actionAlignment;
-    center();
-    switch (actionAlignment) {
-      case TOP:
-        bottom();
-        break;
-      case BOTTOM:
-        top();
-        break;
-      case LEFT:
-        right();
-        break;
-      case RIGHT:
-        left();
-        break;
-    }
+    clear();
   }
 
   @Override

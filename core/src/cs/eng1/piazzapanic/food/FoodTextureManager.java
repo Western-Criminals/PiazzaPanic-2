@@ -17,7 +17,7 @@ public class FoodTextureManager implements Disposable {
     this.foodTextures.put("patty_raw",
         new Texture(Gdx.files.internal("food/original/uncooked_patty.png")));
     this.foodTextures.put("patty_burnt",
-        new Texture(Gdx.files.internal("food/glitch/misc/birch_syrup.png")));
+        new Texture(Gdx.files.internal("food/original/burnt_patty.png")));
     this.foodTextures.put("lettuce_raw",
         new Texture(Gdx.files.internal("food/glitch/vegetable/lettuce.png")));
     this.foodTextures.put("lettuce_chopped",
@@ -39,7 +39,7 @@ public class FoodTextureManager implements Disposable {
     this.foodTextures.put("pizza_base_raw",
         new Texture(Gdx.files.internal("food/original/uncooked_pizza_base.png")));
     this.foodTextures.put("pizza_base_burnt",
-        new Texture(Gdx.files.internal("food/glitch/misc/birch_syrup.png")));
+        new Texture(Gdx.files.internal("food/original/burnt_pizza_base.png")));
     this.foodTextures.put("humborge",
         new Texture(Gdx.files.internal("food/unknown/humborge.png")));
     this.foodTextures.put("salad",
