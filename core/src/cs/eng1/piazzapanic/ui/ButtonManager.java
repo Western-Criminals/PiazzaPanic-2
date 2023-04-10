@@ -21,7 +21,7 @@ import java.util.HashMap;
 public class ButtonManager implements Disposable {
 
   public enum ButtonColour {
-    BLUE, GREEN, GREY, RED, YELLOW
+    BLUE, GREEN, GREY, RED, YELLOW, VIOLET
   }
 
   private final HashMap<ButtonColour, TextButton.TextButtonStyle> textButtonStyles;
