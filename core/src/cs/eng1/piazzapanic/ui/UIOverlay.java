@@ -271,17 +271,17 @@ public class UIOverlay {
       case 0:
         patience = 60;
         repStyle.background = new TextureRegionDrawable(new Texture(
-                "Kenney-Game-Assets-1/2D assets/UI Base Pack/PNG/green_button_outline_up.png"));
+                "Kenney-Game-Assets-1/2D assets/UI Base Pack/PNG/blue_button_outline_up.png"));
         break;
       case 1:
         patience = 40;
         repStyle.background = new TextureRegionDrawable(new Texture(
-                "Kenney-Game-Assets-1/2D assets/UI Base Pack/PNG/yellow_button_outline_up.png"));
+                "Kenney-Game-Assets-1/2D assets/UI Base Pack/PNG/red_button_outline_up.png"));
         break;
       case 2:
         patience = 25;
         repStyle.background = new TextureRegionDrawable(new Texture(
-                "Kenney-Game-Assets-1/2D assets/UI Base Pack/PNG/red_button_outline_up.png"));
+                "Kenney-Game-Assets-1/2D assets/UI Base Pack/PNG/violet_button_outline_up.png"));
         break;
 
     }
