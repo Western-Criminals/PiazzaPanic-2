@@ -45,9 +45,9 @@ public class PlayOverlay {
     Label play = new Label("Play",
             new Label.LabelStyle(game.getFontManager().getTitleFont(), null));
 
-    TextButton easyButton = game.getButtonManager()
-            .createTextButton("Easy", ButtonColour.GREEN);
-    easyButton.addListener(new ClickListener() {
+    TextButton normalButton = game.getButtonManager()
+            .createTextButton("Normal", ButtonColour.BLUE);
+    normalButton.addListener(new ClickListener() {
       @Override
       public void clicked(InputEvent event, float x, float y) {
         hide();
@@ -56,9 +56,9 @@ public class PlayOverlay {
       }
     });
 
-    TextButton mediumButton = game.getButtonManager()
-            .createTextButton("Medium", ButtonColour.YELLOW);
-    mediumButton.addListener(new ClickListener() {
+    TextButton insaneButton = game.getButtonManager()
+            .createTextButton("Insane", ButtonColour.RED);
+    insaneButton.addListener(new ClickListener() {
       @Override
       public void clicked(InputEvent event, float x, float y) {
         hide();
@@ -67,9 +67,9 @@ public class PlayOverlay {
       }
     });
 
-    TextButton hardButton = game.getButtonManager()
-            .createTextButton("Hard", ButtonColour.RED);
-    hardButton.addListener(new ClickListener() {
+    TextButton lunaticButton = game.getButtonManager()
+            .createTextButton("Lunatic", ButtonColour.VIOLET);
+    lunaticButton.addListener(new ClickListener() {
       @Override
       public void clicked(InputEvent event, float x, float y) {
         hide();
@@ -80,9 +80,9 @@ public class PlayOverlay {
     table.add();
     table.add(play).padBottom(20f);
     table.row();
-    table.add(easyButton);
-    table.add(mediumButton);
-    table.add(hardButton);
+    table.add(normalButton);
+    table.add(insaneButton);
+    table.add(lunaticButton);
     table.row();
     table.add();
     table.add(backButton).padTop(60f);
