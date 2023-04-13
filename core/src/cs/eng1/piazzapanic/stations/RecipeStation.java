@@ -2,6 +2,7 @@ package cs.eng1.piazzapanic.stations;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import cs.eng1.piazzapanic.food.LongBoiBank;
 import cs.eng1.piazzapanic.food.CustomerManager;
 import cs.eng1.piazzapanic.food.ingredients.Ingredient;
 import cs.eng1.piazzapanic.food.FoodTextureManager;
@@ -34,6 +35,7 @@ public class RecipeStation extends Station {
   protected int pizzaBaseCount = 0;
   protected int potatoCount = 0;
   private Recipe completedRecipe = null;
+  private LongBoiBank bank = new LongBoiBank();
 
   /**
    * The constructor method for the class
@@ -54,6 +56,10 @@ public class RecipeStation extends Station {
     super(id, textureRegion, stationUIController, alignment);
     this.textureManager = textureManager;
     this.customerManager = customerManager;
+  }
+
+  public int getBalance() {
+    return bank.getBalance();
   }
 
   @Override
@@ -186,6 +192,7 @@ public class RecipeStation extends Station {
       case SUBMIT_ORDER:
         if (completedRecipe != null) {
           if (customerManager.checkRecipe(completedRecipe)) {
+            bank.earn(completedRecipe.getType());
             customerManager.nextRecipe();
             completedRecipe = null;
           }
