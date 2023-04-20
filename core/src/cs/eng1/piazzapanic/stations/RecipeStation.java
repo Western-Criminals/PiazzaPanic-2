@@ -88,8 +88,7 @@ public class RecipeStation extends Station {
       if (!nearbyChef.getStack().isEmpty()) {
         Ingredient checkItem = nearbyChef.getStack().peek();
         if (checkItem.getIsChopped() || checkItem.getIsCooked() || Objects.equals(
-            checkItem.getType(), "bun") || Objects.equals(checkItem.getType(), "cheese") || Objects.equals(
-            checkItem.getType(), "potato")) {
+            checkItem.getType(), "bun") || Objects.equals(checkItem.getType(), "cheese")) {
           //If a chef is nearby and is carrying at least one ingredient
           // and the top ingredient is cooked, chopped or a bun then display the action
           actionTypes.add(ActionType.PLACE_INGREDIENT);
@@ -236,7 +235,7 @@ public class RecipeStation extends Station {
       drawFoodTexture(batch, textureManager.getTexture("pizza_base_cooked"));
     }
     if (potatoCount > 0) {
-      drawFoodTexture(batch, textureManager.getTexture("potato"));
+      drawFoodTexture(batch, textureManager.getTexture("potato_cooked"));
     }
     if (completedRecipe != null) {
       drawFoodTexture(batch, completedRecipe.getTexture());
