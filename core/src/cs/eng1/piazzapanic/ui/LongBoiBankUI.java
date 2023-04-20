@@ -6,7 +6,7 @@ import java.text.DecimalFormat;
 
 public class LongBoiBankUI extends Label {
 	private int balance = 0;
-	DecimalFormat df = new DecimalFormat("#");
+	private final DecimalFormat df = new DecimalFormat("#");
 
 	public LongBoiBankUI(Label.LabelStyle labelStyle) {
 		super("Balance: 0", labelStyle);
