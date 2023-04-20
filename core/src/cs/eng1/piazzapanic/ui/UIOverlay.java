@@ -41,6 +41,8 @@ public class UIOverlay {
   private final LabelStyle repStyle;
   public static Value scale = null;
   public static int patience = 45;
+  private final LabelStyle coinStyle;
+  LongBoiBankUI bankLabel;
 
   public UIOverlay(Stage uiStage, final PiazzaPanicGame game) {
     this.game = game;
@@ -108,6 +110,10 @@ public class UIOverlay {
     LabelStyle counterStyle = new LabelStyle(game.getFontManager().getHeaderFont(), Color.BLACK);
     recipeCountLabel = new Label("0", counterStyle);
 
+    // Initialize bank label
+    coinStyle = new Label.LabelStyle(game.getFontManager().getTitleFont(), Color.PURPLE);
+    bankLabel = new LongBoiBankUI(coinStyle);
+
     // Initialize winning label
     LabelStyle labelStyle = new Label.LabelStyle(game.getFontManager().getTitleFont(), null);
     resultLabel1 = new Label("Congratulations! Your final time was:", labelStyle);
@@ -149,6 +155,8 @@ public class UIOverlay {
     table.row();
     table.add().expandY();
     table.add(repLabel).bottom().width(timerWidth).height(scale);
+    table.row();
+    table.add(bankLabel);
   }
 
   /**
