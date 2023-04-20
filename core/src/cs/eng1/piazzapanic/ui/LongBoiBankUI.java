@@ -4,6 +4,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 
 import java.text.DecimalFormat;
 
+import cs.eng1.piazzapanic.stations.RecipeStation;
+
 public class LongBoiBankUI extends Label {
 	private int balance = 0;
 	private final DecimalFormat df = new DecimalFormat("#");
@@ -12,15 +14,23 @@ public class LongBoiBankUI extends Label {
 		super("Balance: 0", labelStyle);
 	}
 
-	public void setBalance(int balance) {
-		this.balance = balance;
-		updateLabel();
+	public void reset() {
+		balance = 0;
+		RecipeStation.bank.setBalance(balance);
+		setText("Balance: 0");
 	}
+
 	public int getBalance() {
 		return balance;
 	}
 
+	@Override
+	public void act(float x) {
+		balance = RecipeStation.bank.getBalance();
+		updateLabel();
+	}
+
 	public void updateLabel() {
-		this.setText("Balance: " + df.format(balance));
+		setText("Balance: " + df.format(balance));
 	}
 }
