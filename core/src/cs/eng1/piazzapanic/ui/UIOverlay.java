@@ -163,6 +163,7 @@ public class UIOverlay {
    * Reset values and UI to be in their default state.
    */
   public void init() {
+    bankLabel.reset();
     timer.reset();
     timer.start();
     rep = 1;
