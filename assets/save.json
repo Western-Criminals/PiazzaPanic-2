@@ -4,5 +4,6 @@
   "inventory": [],
   "upgrade" : [],
   "timer": 0,
-  "reputation": 3
+  "reputation": 3,
+  "patience": 60,
 }
