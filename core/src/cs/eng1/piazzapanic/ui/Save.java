@@ -17,14 +17,16 @@ public class Save {
     private List<String> upgrades = new LinkedList<>();
     private Integer timer;
     private int reputation;
+    private int patience;
 
-    public Save(String difficulty, int balance, Stack<String> inventory, List<String> upgrades, Integer timer, int reputation) {
+    public Save(String difficulty, int balance, Stack<String> inventory, List<String> upgrades, Integer timer, int reputation, int patience) {
         this.difficulty = difficulty;
         this.balance = balance;
         this.inventory = inventory;
         this.upgrades = upgrades;
         this.timer = timer;
         this.reputation = reputation;
+        this.patience = patience;
         toJson();
     }
 
@@ -44,6 +46,7 @@ public class Save {
             }
             timer = jsonObject.getInt("timer");
             reputation = jsonObject.getInt("reputation");
+            patience = jsonObject.getInt("patience");
         } catch (IOException e) {
             throw e.getCause();
         }
@@ -95,6 +98,13 @@ public class Save {
         this.reputation = reputation;
     }
 
+    public int getPatience() {
+        return patience;
+    }
+    public void setPatience(int patience) {
+        this.patience = patience;
+    }
+
     private void toJson() {
         jsonObject.put("difficulty", difficulty);
         jsonObject.put("balance", balance);
@@ -110,6 +120,7 @@ public class Save {
         jsonObject.put("upgrades", u_lst);
         jsonObject.put("timer", timer);
         jsonObject.put("reputation", reputation);
+        jsonObject.put("patience", patience);
     }
 
     public void clear() {
@@ -119,16 +130,16 @@ public class Save {
         upgrades.clear();
         timer = 0;
         reputation = 3;
+        patience = 60;
         toJson();
     }
-    public boolean write(String path) {
+    public void write(String path) throws Throwable {
         toJson();
         try {
             Writer write = jsonObject.write(new FileWriter(path), 4, 0);
             write.close();
-            return true;
         } catch (IOException e) {
-            return false;
+            throw e.getCause();
         }
     }
 }
