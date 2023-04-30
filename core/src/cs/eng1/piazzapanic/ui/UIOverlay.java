@@ -38,7 +38,7 @@ public class UIOverlay {
   private final Label resultRep;
   private final PiazzaPanicGame game;
   public static int rep;
-  private final Label repLabel;
+  public final Label repLabel;
   private static Timer repTimer = null;
   private final LabelStyle repStyle;
   public static Value scale = null;
