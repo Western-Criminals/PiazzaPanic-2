@@ -154,6 +154,7 @@ public class DifficultyOverlay {
         save.clear();
         bank.setBalance(0);
         timer.reset();
+        timer.start();
         rep = 3;
     }
 }
