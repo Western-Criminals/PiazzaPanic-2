@@ -18,6 +18,16 @@ import static cs.eng1.piazzapanic.screens.GameScreen.uiOverlay;
 
 public class DifficultyOverlay {
 
+  static Save save;
+
+  static {
+    try {
+      save = new Save("save.json");
+    } catch (Throwable e) {
+      throw new RuntimeException(e);
+    }
+  }
+
   private final Table table;
   PiazzaPanicGame game;
 
@@ -55,6 +65,9 @@ public class DifficultyOverlay {
         hide();
         game.loadGameScreen(false);
         uiOverlay.updatePatience(0);
+        save.clear();
+        save.setDifficulty("normal");
+        save.write("save.json");
       }
     });
 
@@ -66,6 +79,9 @@ public class DifficultyOverlay {
         hide();
         game.loadGameScreen(false);
         uiOverlay.updatePatience(1);
+        save.clear();
+        save.setDifficulty("insane");
+        save.write("save.json");
       }
     });
 
@@ -77,17 +93,23 @@ public class DifficultyOverlay {
         hide();
         game.loadGameScreen(false);
         uiOverlay.updatePatience(2);
+        save.clear();
+        save.setDifficulty("lunatic");
+        save.write("save.json");
       }
     });
 
     TextButton endlessButton = game.getButtonManager()
-            .createTextButton("Endless", ButtonColour.GREEN);
+            .createTextButton("Eternity", ButtonColour.YELLOW);
     endlessButton.addListener(new ClickListener() {
       @Override
       public void clicked(InputEvent event, float x, float y) {
         hide();
         game.loadGameScreen(true);
         uiOverlay.updatePatience(0);
+        save.clear();
+        save.setDifficulty("eternity");
+        save.write("save.json");
       }
     });
 
