@@ -12,6 +12,11 @@ import cs.eng1.piazzapanic.PiazzaPanicGame;
 import cs.eng1.piazzapanic.screens.GameScreen;
 import cs.eng1.piazzapanic.ui.ButtonManager.ButtonColour;
 
+import static cs.eng1.piazzapanic.stations.RecipeStation.bank;
+import static cs.eng1.piazzapanic.ui.PlayOverlay.save;
+import static cs.eng1.piazzapanic.ui.UIOverlay.rep;
+import static cs.eng1.piazzapanic.ui.UIOverlay.timer;
+
 public class PauseOverlay {
   private final Table table;
   public PauseOverlay(final PiazzaPanicGame game) {
@@ -48,11 +53,19 @@ public class PauseOverlay {
     });
 
     TextButton homeButton = game.getButtonManager()
-            .createTextButton("Back to home screen", ButtonColour.RED);
+            .createTextButton("Save & Quit", ButtonColour.RED);
     homeButton.addListener(new ClickListener() {
       @Override
       public void clicked(InputEvent event, float x, float y) {
         hide();
+        save.setBalance(bank.getBalance());
+        save.setTimer((int) timer.getTime());
+        save.setReputation(rep);
+        try {
+          save.write("save.json");
+        } catch (Throwable e) {
+          throw new RuntimeException(e);
+        }
         game.loadHomeScreen();
       }
     });
