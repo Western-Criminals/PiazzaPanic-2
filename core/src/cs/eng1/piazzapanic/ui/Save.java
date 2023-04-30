@@ -3,26 +3,32 @@ package cs.eng1.piazzapanic.ui;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Stack;
 
-import org.json.*;
+import cs.eng1.piazzapanic.chef.FixedStack;
+import cs.eng1.piazzapanic.food.ingredients.Ingredient;
+import org.json.JSONTokener;
+import org.json.JSONObject;
+import org.json.JSONArray;
 
 public class Save {
     private JSONObject jsonObject = new JSONObject();
+    private JSONObject inventoryObject = new JSONObject();
     private String difficulty;
     private int balance;
-    private Stack<String> inventory = new Stack<>();
+    private FixedStack<String> inventory = new FixedStack<>(5);
+    private ArrayList<FixedStack<String>> inventories = new ArrayList<>();
     private List<String> upgrades = new LinkedList<>();
     private Integer timer;
     private int reputation;
     private int patience;
 
-    public Save(String difficulty, int balance, Stack<String> inventory, List<String> upgrades, Integer timer, int reputation, int patience) {
+    public Save(String difficulty, int balance, ArrayList<FixedStack<String>> inventories, List<String> upgrades, Integer timer, int reputation, int patience) {
         this.difficulty = difficulty;
         this.balance = balance;
-        this.inventory = inventory;
+        this.inventories = inventories;
         this.upgrades = upgrades;
         this.timer = timer;
         this.reputation = reputation;
@@ -34,11 +40,15 @@ public class Save {
         try {
             JSONTokener jsonTokener = new JSONTokener(Files.newInputStream(Paths.get(path)));
             jsonObject = new JSONObject(jsonTokener);
+            inventoryObject = jsonObject.getJSONObject("inventories");
             difficulty = jsonObject.getString("difficulty");
             balance = jsonObject.getInt("balance");
-            JSONArray i_lst = jsonObject.getJSONArray("inventory");
-            for (Object upgrade : i_lst) {
-                inventory.push((String) upgrade);
+            for (int i = 0; i < inventoryObject.length(); i ++) {
+                JSONArray i_lst = inventoryObject.getJSONArray(String.format("c%s", i));
+                for (Object item : i_lst) {
+                    inventory.push((String) item);
+                }
+                inventories.add(inventory);
             }
             JSONArray u_lst = jsonObject.getJSONArray("upgrade");
             for (Object upgrade : u_lst) {
@@ -70,11 +80,14 @@ public class Save {
         this.balance = balance;
     }
 
-    public Stack<String> getInventory() {
-        return inventory;
+    public ArrayList<FixedStack<String>> getInventories() {
+        return inventories;
     }
-    public void setInventory(Stack<String> inventory) {
-        this.inventory = inventory;
+    public void setInventories(int index, FixedStack<Ingredient> inventory) {
+        for (Ingredient ingredient : inventory) {
+            this.inventory.push(ingredient.toString());
+        }
+        this.inventories.set(index, this.inventory);
     }
 
     public List<String> getUpgrade() {
@@ -109,10 +122,13 @@ public class Save {
         jsonObject.put("difficulty", difficulty);
         jsonObject.put("balance", balance);
         JSONArray i_lst = new JSONArray();
-        for (String inv : inventory) {
-            i_lst.put(inv);
+        for (int i = 0; i < inventories.size(); i ++) {
+            for (String inv : inventory) {
+                i_lst.put(inv);
+            }
+            inventoryObject.put(String.format("c%s", i), i_lst);
         }
-        jsonObject.put("inventory", i_lst);
+        jsonObject.put("inventories", inventoryObject);
         JSONArray u_lst = new JSONArray();
         for (String upgrade : upgrades) {
             u_lst.put(upgrade);
@@ -127,6 +143,7 @@ public class Save {
         difficulty = "normal";
         balance = 0;
         inventory.clear();
+        inventories.replaceAll(ignored -> inventory);
         upgrades.clear();
         timer = 0;
         reputation = 3;
