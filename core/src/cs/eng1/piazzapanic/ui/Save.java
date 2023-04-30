@@ -49,6 +49,10 @@ public class Save {
         }
     }
 
+    public Save() {
+        clear();
+    }
+
     public String getDifficulty() {
         return difficulty;
     }
@@ -117,7 +121,7 @@ public class Save {
         reputation = 3;
         toJson();
     }
-    public boolean write(String path) throws Throwable {
+    public boolean write(String path) {
         toJson();
         try {
             Writer write = jsonObject.write(new FileWriter(path), 4, 0);
