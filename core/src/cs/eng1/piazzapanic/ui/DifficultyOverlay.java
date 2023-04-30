@@ -15,18 +15,9 @@ import cs.eng1.piazzapanic.PiazzaPanicGame;
 import cs.eng1.piazzapanic.ui.ButtonManager.ButtonColour;
 
 import static cs.eng1.piazzapanic.screens.GameScreen.uiOverlay;
+import static cs.eng1.piazzapanic.ui.PlayOverlay.save;
 
 public class DifficultyOverlay {
-
-  static Save save;
-
-  static {
-    try {
-      save = new Save("save.json");
-    } catch (Throwable e) {
-      throw new RuntimeException(e);
-    }
-  }
 
   private final Table table;
   PiazzaPanicGame game;
