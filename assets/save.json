@@ -1,9 +1,14 @@
 {
-  "difficulty": "normal",
-  "balance": 0,
-  "inventory": [],
-  "upgrade" : [],
-  "timer": 0,
-  "reputation": 3,
-  "patience": 60,
+    "difficulty": "insane",
+    "timer": 0,
+    "balance": 0,
+    "upgrade": [],
+    "inventories": {
+        "c0": [],
+        "c1": [],
+        "c2": []
+    },
+    "patience": 60,
+    "reputation": 3,
+    "upgrades": []
 }
