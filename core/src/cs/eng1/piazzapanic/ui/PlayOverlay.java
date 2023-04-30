@@ -13,6 +13,7 @@ import cs.eng1.piazzapanic.PiazzaPanicGame;
 import cs.eng1.piazzapanic.screens.HomeScreen;
 import cs.eng1.piazzapanic.ui.ButtonManager.ButtonColour;
 
+import static cs.eng1.piazzapanic.screens.GameScreen.uiOverlay;
 import static cs.eng1.piazzapanic.stations.RecipeStation.bank;
 import static cs.eng1.piazzapanic.ui.UIOverlay.timer;
 import static cs.eng1.piazzapanic.ui.UIOverlay.rep;
@@ -71,9 +72,25 @@ public class PlayOverlay {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 //added load game functionality! (˵ •̀ ᴗ - ˵ ) ✧
+                game.loadGameScreen(save.isEndless());
                 bank.setBalance(save.getBalance());
                 timer.setTime(save.getTimer());
                 rep = save.getReputation();
+                hide();
+                switch (save.getDifficulty()) {
+                    case "normal":
+                        uiOverlay.updatePatience(0);
+                        break;
+                    case "insane":
+                        uiOverlay.updatePatience(1);
+                        break;
+                    case "lunatic":
+                        uiOverlay.updatePatience(2);
+                        break;
+                    case "eternity":
+                        uiOverlay.updatePatience(0);
+                        break;
+                }
             }
         });
         HorizontalGroup buttons = new HorizontalGroup();
