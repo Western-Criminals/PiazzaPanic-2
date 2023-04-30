@@ -14,8 +14,8 @@ import cs.eng1.piazzapanic.ui.ButtonManager.ButtonColour;
 
 import static cs.eng1.piazzapanic.stations.RecipeStation.bank;
 import static cs.eng1.piazzapanic.ui.PlayOverlay.save;
-import static cs.eng1.piazzapanic.ui.UIOverlay.rep;
 import static cs.eng1.piazzapanic.ui.UIOverlay.timer;
+import static cs.eng1.piazzapanic.ui.UIOverlay.rep;
 
 public class PauseOverlay {
   private final Table table;
