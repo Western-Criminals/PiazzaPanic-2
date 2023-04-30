@@ -15,6 +15,16 @@ import cs.eng1.piazzapanic.ui.ButtonManager.ButtonColour;
 
 public class PlayOverlay {
 
+  static Save save;
+
+  static {
+    try {
+      save = new Save("save.json");
+    } catch (Throwable e) {
+      throw new RuntimeException(e);
+    }
+  }
+
   private final Table table;
   PiazzaPanicGame game;
 
