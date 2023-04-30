@@ -58,7 +58,11 @@ public class DifficultyOverlay {
         uiOverlay.updatePatience(0);
         save.clear();
         save.setDifficulty("normal");
-        save.write("save.json");
+        try {
+          save.write("save.json");
+        } catch (Throwable e) {
+          throw new RuntimeException(e);
+        }
       }
     });
 
@@ -72,7 +76,11 @@ public class DifficultyOverlay {
         uiOverlay.updatePatience(1);
         save.clear();
         save.setDifficulty("insane");
-        save.write("save.json");
+        try {
+          save.write("save.json");
+        } catch (Throwable e) {
+          throw new RuntimeException(e);
+        }
       }
     });
 
@@ -86,7 +94,11 @@ public class DifficultyOverlay {
         uiOverlay.updatePatience(2);
         save.clear();
         save.setDifficulty("lunatic");
-        save.write("save.json");
+        try {
+          save.write("save.json");
+        } catch (Throwable e) {
+          throw new RuntimeException(e);
+        }
       }
     });
 
@@ -100,7 +112,11 @@ public class DifficultyOverlay {
         uiOverlay.updatePatience(0);
         save.clear();
         save.setDifficulty("eternity");
-        save.write("save.json");
+        try {
+          save.write("save.json");
+        } catch (Throwable e) {
+          throw new RuntimeException(e);
+        }
       }
     });
 
