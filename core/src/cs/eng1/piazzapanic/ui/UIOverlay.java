@@ -30,14 +30,14 @@ public class UIOverlay {
   private final TextureRegionDrawable removeBtnDrawable;
   private final Image recipeImagesBG;
   private final VerticalGroup recipeImages;
-  private static Timer timer = null;
+  public static Timer timer = null;
   private final Label recipeCountLabel;
   private final Label resultLabel1;
   private final Label resultLabel2;
   private final Timer resultTimer;
   private final Label resultRep;
   private final PiazzaPanicGame game;
-  private int rep;
+  public static int rep;
   private final Label repLabel;
   private static Timer repTimer = null;
   private final LabelStyle repStyle;
