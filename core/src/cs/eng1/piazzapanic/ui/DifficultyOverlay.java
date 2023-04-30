@@ -16,6 +16,7 @@ import cs.eng1.piazzapanic.ui.ButtonManager.ButtonColour;
 
 import static cs.eng1.piazzapanic.screens.GameScreen.uiOverlay;
 import static cs.eng1.piazzapanic.ui.PlayOverlay.save;
+import static cs.eng1.piazzapanic.ui.UIOverlay.rep;
 
 public class DifficultyOverlay {
 
@@ -56,6 +57,7 @@ public class DifficultyOverlay {
         hide();
         game.loadGameScreen(false);
         uiOverlay.updatePatience(0);
+        rep = 3;
         save.clear();
         save.setDifficulty("normal");
         try {
@@ -74,6 +76,7 @@ public class DifficultyOverlay {
         hide();
         game.loadGameScreen(false);
         uiOverlay.updatePatience(1);
+        rep = 3;
         save.clear();
         save.setDifficulty("insane");
         try {
@@ -92,6 +95,7 @@ public class DifficultyOverlay {
         hide();
         game.loadGameScreen(false);
         uiOverlay.updatePatience(2);
+        rep = 3;
         save.clear();
         save.setDifficulty("lunatic");
         try {
@@ -110,6 +114,7 @@ public class DifficultyOverlay {
         hide();
         game.loadGameScreen(true);
         uiOverlay.updatePatience(0);
+        rep = 3;
         save.clear();
         save.setDifficulty("eternity");
         try {
