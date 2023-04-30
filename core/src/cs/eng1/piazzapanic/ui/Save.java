@@ -118,6 +118,10 @@ public class Save {
         this.patience = patience;
     }
 
+    public boolean isEndless() {
+        return difficulty.equals("eternity");
+    }
+
     private void toJson() {
         jsonObject.put("difficulty", difficulty);
         jsonObject.put("balance", balance);
