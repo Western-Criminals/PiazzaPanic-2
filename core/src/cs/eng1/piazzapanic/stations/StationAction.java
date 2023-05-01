@@ -43,7 +43,7 @@ public class StationAction {
       case CLEAR_TABLE:
         return "Clear Table";
       case GET_POWERUP:
-        return "Buy Powerup: $30";
+        return "Powerup: $30";
       case GET_CHEF:
         return "Buy Chef: $30";
       default:

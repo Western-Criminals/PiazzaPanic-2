@@ -97,8 +97,8 @@ public class ChefManager implements Disposable {
    * @param stage The game world to which the chefs should be added.
    */
   public void addChefsToStage(final Stage stage) {
-    for (Chef chef : chefs) {
-      stage.addActor(chef);
+    for (int i = 0; i < chefs.size() -1; i++) {
+      stage.addActor(chefs.get(i));
     }
     stage.addListener(new ClickListener() {
       @Override
@@ -111,6 +111,21 @@ public class ChefManager implements Disposable {
         }
       }
     });
+  }
+  public void addLastChefToStage(final Stage stage) {
+    stage.addActor(chefs.get(2));
+
+//    stage.addListener(new ClickListener() {
+//      @Override
+//      public void clicked(InputEvent event, float x, float y) {
+//        Actor actorHit = stage.hit(x, y, false);
+//        if (actorHit instanceof Chef) {
+//          manager.setCurrentChef((Chef) actorHit);
+//        } else {
+//          manager.setCurrentChef(null);
+//        }
+//      }
+//    });
   }
 
   /**
