@@ -4,7 +4,7 @@ public class LongBoiBank {
 	private static int balance = 0;
 
 	public void setBalance(int balance) {
-		this.balance = balance;
+		LongBoiBank.balance = balance;
 	}
 
 	public int getBalance() {
@@ -42,6 +42,9 @@ public class LongBoiBank {
 				}
 				break;
 			case "insane":
+			case "eternity":
+				// gonna implement this bad boi later ¯\_(ツ)_/¯
+				// making it the same as insane for now
 				if (checkEnoughLongBoiCoins(30)) {
 					balance -= 30;
 				}
@@ -50,9 +53,6 @@ public class LongBoiBank {
 				if (checkEnoughLongBoiCoins(50)) {
 					balance -= 50;
 				}
-				break;
-			case "eternity":
-				// gonna implement this bad boi later ¯\_(ツ)_/¯
 				break;
 		}
 	}

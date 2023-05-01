@@ -142,7 +142,7 @@ public class UIOverlay {
     repStyle = new LabelStyle(game.getFontManager().getHeaderFont(), Color.BLACK);
     repStyle.background = new TextureRegionDrawable(new Texture(
             "Kenney-Game-Assets-1/2D assets/UI Base Pack/PNG/grey_button_gradient_down.png"));
-    repLabel = new Label("Reputation: 3", repStyle);
+    repLabel = new Label("Reputation: " + rep, repStyle);
     repTimer = new Timer(timerStyle);
     repLabel.setAlignment(Align.center);
 
