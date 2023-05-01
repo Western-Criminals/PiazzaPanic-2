@@ -104,6 +104,14 @@
     <property name="stationType" value="choppingStation"/>
    </properties>
   </object>
+  <object id="19" name="Powerup Station" type="Station" gid="129" x="500" y="120" width="128" height="128" rotation="-90">
+   <properties>
+    <property name="actionAlignment" value="TOP"/>
+    <property name="collisionObjectIDs" value="99"/>
+    <property name="ingredients" value="powerup"/>
+    <property name="stationType" value="ingredientStation"/>
+   </properties>
+  </object>
   <object id="22" name="Cooker Collider 1" x="1600" y="256" width="64" height="128"/>
   <object id="24" name="Coocker Collider 2" x="1600" y="512" width="64" height="128"/>
   <object id="29" x="1280" y="832" width="128" height="64"/>
@@ -115,6 +123,7 @@
   <object id="40" x="1216" y="448" width="256" height="256"/>
   <object id="43" x="1216" y="192" width="256" height="256"/>
   <object id="50" type="Station" gid="129" x="896" y="256" width="128" height="128">
+    
    <properties>
     <property name="collisionObjectIDs" value="51"/>
     <property name="ingredients" value="potato"/>
