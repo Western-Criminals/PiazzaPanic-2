@@ -144,7 +144,7 @@ public class GameScreen implements Screen {
           break;
         case "chefStation":
           station = new ChefStation(id, tileObject.getTextureRegion(), stationUIController,
-                  alignment);
+                  alignment, stage, chefManager);
           break;
         default:
           station = new Station(id, tileObject.getTextureRegion(), stationUIController, alignment);
