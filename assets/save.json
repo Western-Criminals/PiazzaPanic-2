@@ -1,0 +1,14 @@
+{
+    "difficulty": "eternity",
+    "timer": 2,
+    "balance": 0,
+    "upgrade": [],
+    "inventories": {
+        "c0": [],
+        "c1": [],
+        "c2": []
+    },
+    "patience": 60,
+    "reputation": 3,
+    "upgrades": []
+}
