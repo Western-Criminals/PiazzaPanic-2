@@ -30,6 +30,7 @@ public class Chef extends Actor implements Disposable {
   private final FixedStack<Ingredient> ingredientStack = new FixedStack<>(5);
 
   private final Vector2 inputVector;
+  public static float speed = 3f;
 
   /**
    * a parameter which adds a small amount of distance between the chef's boundaries and any other
@@ -119,7 +120,6 @@ public class Chef extends Actor implements Disposable {
    * @return the vector representing how far the chef should move
    */
   private Vector2 calculateMovement(float delta) {
-    float speed = 3f;
     Vector2 movement = new Vector2(inputVector.x * speed * delta, inputVector.y * speed * delta);
 
     // Adjust movement for collision
